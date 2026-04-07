@@ -22,6 +22,16 @@ app.get("/health", (_req, res) => {
   });
 });
 
+app.get("/", (_req, res) => {
+  res.json({
+    status: "ok",
+    service: "api-casas-apuestas",
+    admin: "/admin",
+    health: "/health",
+    endpointsBase: "/api",
+  });
+});
+
 app.use("/api/bookmakers", bookmakersRoutes);
 app.use("/api/events", eventsRoutes);
 app.use("/api/odds", oddsRoutes);
