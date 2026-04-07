@@ -61,6 +61,10 @@ Pasos:
   - Ejecutar colectores HTTP/WS
   - Ver snapshot live de cuotas ingeridas
 
+## Documentacion web
+
+- URL local: `http://localhost:3000/documentation`
+
 ## Respuesta ejemplo: mejores cuotas
 
 ```json

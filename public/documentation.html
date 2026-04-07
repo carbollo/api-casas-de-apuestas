@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentacion API Casas de Apuestas</title>
+    <link rel="stylesheet" href="/admin.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Documentacion API</h1>
+      <p class="sub">Referencia rapida de endpoints y panel</p>
+
+      <section class="card">
+        <h2>Rutas base</h2>
+        <pre>{
+  "root": "/",
+  "health": "/health",
+  "admin": "/admin",
+  "documentation": "/documentation",
+  "apiBase": "/api"
+}</pre>
+      </section>
+
+      <section class="card">
+        <h2>Bookmakers y eventos</h2>
+        <pre>GET /api/bookmakers
+GET /api/events
+GET /api/events?sport=football&amp;league=LaLiga</pre>
+      </section>
+
+      <section class="card">
+        <h2>Cuotas</h2>
+        <pre>GET /api/odds/:eventId
+GET /api/odds/:eventId/best</pre>
+      </section>
+
+      <section class="card">
+        <h2>Collectores y fuentes</h2>
+        <pre>GET    /api/collectors/sources
+POST   /api/collectors/sources
+PATCH  /api/collectors/sources/:id
+DELETE /api/collectors/sources/:id
+POST   /api/collectors/run/http
+POST   /api/collectors/run/ws
+GET    /api/collectors/snapshot</pre>
+      </section>
+    </main>
+  </body>
+</html>

@@ -27,6 +27,7 @@ app.get("/", (_req, res) => {
     status: "ok",
     service: "api-casas-apuestas",
     admin: "/admin",
+    documentation: "/documentation",
     health: "/health",
     endpointsBase: "/api",
   });
@@ -39,6 +40,10 @@ app.use("/api/collectors", collectorsRoutes);
 
 app.get("/admin", (_req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "admin.html"));
+});
+
+app.get("/documentation", (_req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "documentation.html"));
 });
 
 app.use((_req, res) => {
