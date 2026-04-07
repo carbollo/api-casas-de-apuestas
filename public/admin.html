@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel API Apuestas</title>
+    <link rel="stylesheet" href="/admin.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Panel de Control API</h1>
+      <p class="sub">Gestion de fuentes, colectores y snapshot live</p>
+
+      <section class="card">
+        <h2>Crear fuente</h2>
+        <form id="create-source-form">
+          <input name="id" placeholder="id (ej: bet365-http)" required />
+          <input name="bookmakerId" placeholder="bookmakerId (ej: bet365)" required />
+          <select name="type" required>
+            <option value="http">http</option>
+            <option value="ws">ws</option>
+          </select>
+          <input name="url" placeholder="URL endpoint/ws" required />
+          <input name="method" placeholder="GET" />
+          <label><input type="checkbox" name="enabled" /> habilitada</label>
+          <button type="submit">Crear</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Acciones</h2>
+        <div class="actions">
+          <button id="btn-refresh-sources">Refrescar fuentes</button>
+          <button id="btn-run-http">Ejecutar HTTP</button>
+          <button id="btn-run-ws">Ejecutar WS (10s)</button>
+          <button id="btn-refresh-snapshot">Refrescar snapshot</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Fuentes</h2>
+        <div id="sources"></div>
+      </section>
+
+      <section class="card">
+        <h2>Snapshot live</h2>
+        <pre id="snapshot"></pre>
+      </section>
+
+      <section class="card">
+        <h2>Resultado ultima accion</h2>
+        <pre id="output"></pre>
+      </section>
+    </main>
+    <script src="/admin.js"></script>
+  </body>
+</html>

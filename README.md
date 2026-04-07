@@ -52,6 +52,15 @@ Pasos:
 - `POST /api/collectors/run/ws` ejecuta captura temporal desde WebSockets abiertos
 - `GET /api/collectors/snapshot` devuelve cuotas live ingeridas
 
+## Panel de control
+
+- URL local: `http://localhost:3000/admin`
+- Desde el panel puedes:
+  - Crear fuentes HTTP/WS
+  - Habilitar/deshabilitar y eliminar fuentes
+  - Ejecutar colectores HTTP/WS
+  - Ver snapshot live de cuotas ingeridas
+
 ## Respuesta ejemplo: mejores cuotas
 
 ```json

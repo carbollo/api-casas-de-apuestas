@@ -1,8 +1,8 @@
 const WebSocket = require("ws");
-const { sourceConfigs } = require("../data/sourceConfigs");
+const { listSources } = require("./sourceRegistryService");
 const { upsertOdd, getLiveSnapshot } = require("./liveOddsStore");
 
-const getSources = () => sourceConfigs;
+const getSources = () => listSources();
 
 const normalizeFromHttp = (bookmakerId, payload) => {
   if (!Array.isArray(payload)) {
@@ -42,7 +42,7 @@ const normalizeFromWs = (bookmakerId, payload) => {
 };
 
 const runHttpCollectors = async () => {
-  const httpSources = sourceConfigs.filter((source) => source.enabled && source.type === "http");
+  const httpSources = listSources().filter((source) => source.enabled && source.type === "http");
   const report = [];
 
   for (const source of httpSources) {
@@ -66,7 +66,7 @@ const runHttpCollectors = async () => {
 };
 
 const runWsCollectors = async ({ timeoutMs = 10000 } = {}) => {
-  const wsSources = sourceConfigs.filter((source) => source.enabled && source.type === "ws");
+  const wsSources = listSources().filter((source) => source.enabled && source.type === "ws");
   const report = [];
 
   const tasks = wsSources.map(

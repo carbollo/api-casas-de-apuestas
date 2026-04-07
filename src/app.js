@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const cors = require("cors");
 const morgan = require("morgan");
 
@@ -12,6 +13,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(express.static(path.join(__dirname, "..", "public")));
 
 app.get("/health", (_req, res) => {
   res.json({
@@ -24,6 +26,10 @@ app.use("/api/bookmakers", bookmakersRoutes);
 app.use("/api/events", eventsRoutes);
 app.use("/api/odds", oddsRoutes);
 app.use("/api/collectors", collectorsRoutes);
+
+app.get("/admin", (_req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "admin.html"));
+});
 
 app.use((_req, res) => {
   res.status(404).json({
