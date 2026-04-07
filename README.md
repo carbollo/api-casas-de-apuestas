@@ -65,6 +65,23 @@ Pasos:
 
 - URL local: `http://localhost:3000/documentation`
 
+## Betfair por defecto
+
+La API incluye una fuente predeterminada `betfair-default` (deshabilitada por seguridad) con provider nativo.
+
+Para activarla:
+
+1. Configura variables de entorno:
+   - `BETFAIR_APP_KEY`
+   - `BETFAIR_SESSION_TOKEN`
+   - `BETFAIR_MARKET_IDS` (CSV, ejemplo: `1.23456789,1.98765432`)
+2. En `/admin`, habilita la fuente `betfair-default`.
+3. Ejecuta `Ejecutar HTTP`.
+
+Notas:
+- Usa endpoint oficial `listMarketBook` de Betfair.
+- El conector normaliza odds desde `EX_BEST_OFFERS`.
+
 ## Respuesta ejemplo: mejores cuotas
 
 ```json

@@ -30,6 +30,10 @@ const createSource = (payload) => {
   if (type === "http") {
     created.method = method;
   }
+  if (payload.provider !== undefined) created.provider = String(payload.provider).trim();
+  if (Array.isArray(payload.marketIds)) created.marketIds = payload.marketIds;
+  if (payload.headers && typeof payload.headers === "object") created.headers = payload.headers;
+  if (payload.body && typeof payload.body === "object") created.body = payload.body;
   sourceRegistry.push(created);
   return { ok: true, data: created };
 };
@@ -48,6 +52,10 @@ const updateSource = (id, payload) => {
   if (payload.type !== undefined) source.type = String(payload.type).trim();
   if (payload.url !== undefined) source.url = String(payload.url).trim();
   if (payload.enabled !== undefined) source.enabled = Boolean(payload.enabled);
+  if (payload.provider !== undefined) source.provider = String(payload.provider).trim();
+  if (payload.marketIds !== undefined) source.marketIds = Array.isArray(payload.marketIds) ? payload.marketIds : [];
+  if (payload.headers !== undefined) source.headers = payload.headers && typeof payload.headers === "object" ? payload.headers : undefined;
+  if (payload.body !== undefined) source.body = payload.body && typeof payload.body === "object" ? payload.body : undefined;
 
   if (source.type === "http") {
     source.method = payload.method ? String(payload.method).toUpperCase() : source.method || "GET";
